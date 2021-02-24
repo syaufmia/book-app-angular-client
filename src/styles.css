@@ -104,33 +104,33 @@ main {
 /*  inline-size: max-content;*/
 /*  padding: 0;*/
 /*}*/
-/*.button {*/
-/*  display: inline-block;*/
-/*  background-color: #376E6F;*/
-/*  border: none;*/
-/*  width: 40%;*/
-/*  color: #EAE7DC;*/
-/*  cursor: pointer;*/
-/*  text-align: center;*/
-/*  padding: 15px 15px;*/
-/*  margin: 15px;*/
-/*  font-size: large;*/
-/*}*/
-/*.button:hover {*/
-/*  background-color:#e85a4f;*/
-/*}*/
-/*.invisible-button {*/
-/*  appearance: none;*/
-/*  cursor: pointer;*/
-/*  border-style: none;*/
-/*  background: inherit;*/
-/*  color: inherit;*/
-/*  font-family: inherit;*/
-/*  font-size: inherit;*/
-/*  font-weight: bold;*/
-/*  padding: 0;*/
-/*  box-sizing: content-box;*/
-/*}*/
+.button {
+  display: inline-block;
+  background-color: #376E6F;
+  border: none;
+  width: 40%;
+  color: #EAE7DC;
+  cursor: pointer;
+  text-align: center;
+  padding: 15px 15px;
+  margin: 15px;
+  font-size: large;
+}
+.button:hover {
+  background-color:#e85a4f;
+}
+.invisible-button {
+  appearance: none;
+  cursor: pointer;
+  border-style: none;
+  background: inherit;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: bold;
+  padding: 0;
+  box-sizing: content-box;
+}
 .form {
   background: rgba(255, 255, 255, 0.25);
   padding: 15px 15px;
@@ -146,26 +146,26 @@ main {
   border: none;
 }
 
-.real-table {
-  border-collapse: collapse;
-  overflow: hidden;
-  border: 1px solid #376E6F;
-  border-radius: 20px;
-  display: inline-block;
-  float: none;
-}
+/*.real-table {*/
+/*  border-collapse: collapse;*/
+/*  overflow: hidden;*/
+/*  border: 1px solid #376E6F;*/
+/*  border-radius: 20px;*/
+/*  display: inline-block;*/
+/*  float: none;*/
+/*}*/
 
-.real-table th, .real-table td {
-  padding: 10px 25px;
-}
-.real-table tr:nth-child(even) {
-  background:  #EAE7DC;
-}
+/*.real-table th, .real-table td {*/
+/*  padding: 10px 25px;*/
+/*}*/
+/*.real-table tr:nth-child(even) {*/
+/*  background:  #EAE7DC;*/
+/*}*/
 
-.real-table th {
-  background-color: #376E6F;
-  color: #EAE7DC;
-}
+/*.real-table th {*/
+/*  background-color: #376E6F;*/
+/*  color: #EAE7DC;*/
+/*}*/
 
 .text-field {
   width: 100%;

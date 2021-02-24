@@ -1,0 +1,23 @@
+<main>
+
+  <div class="text-box">
+    <h1> List of Authors </h1>
+
+    <div class="text-box">
+      <table class="real-table">
+
+        <tr>
+          <th>Vorname</th>
+          <th>Nachname</th>
+
+        </tr>
+        <tr *ngFor="let author of authors">
+          <td>{{author.first_name}}</td>
+          <td>{{author.last_name}}</td>
+        </tr>
+
+      </table>
+    </div>
+
+  </div>
+</main>

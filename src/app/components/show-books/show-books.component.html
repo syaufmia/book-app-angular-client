@@ -1,0 +1,28 @@
+<main>
+
+  <div class="text-box">
+    <h1> List of Books </h1>
+
+    <div class="text-box">
+      <table class="real-table">
+
+          <tr>
+            <th>Titel</th>
+            <th>ISBN</th>
+            <th>Autor</th>
+            <th>Verlag</th>
+            <th>Ersch.Jahr</th>
+          </tr>
+          <tr *ngFor="let book of books">
+            <td>{{book.title}}</td>
+            <td>{{book.isbn}}</td>
+            <td>{{book.author.first_name}} {{book.author.last_name}} </td>
+            <td>{{book.publisher}}</td>
+            <td>{{book.year}}</td>
+          </tr>
+
+      </table>
+    </div>
+
+  </div>
+</main>
