@@ -10,18 +10,22 @@ import { ShowBooksComponent } from './components/show-books/show-books.component
 import { ShowAuthorsComponent } from './components/show-authors/show-authors.component';
 
 import { DataService} from './service/data.service';
+import { AddAuthorComponent } from './components/add-author/add-author.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     ShowBooksComponent,
-    ShowAuthorsComponent
+    ShowAuthorsComponent,
+    AddAuthorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     DataService

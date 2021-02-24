@@ -7,9 +7,9 @@ export class Author {
   last_name: string;
   books: Book[];
 
-  constructor(id?: number,
-              first_name?: string,
+  constructor(first_name?: string,
               last_name?: string,
+              id?: number,
               books?: Book[]) {
     if (id) {
       this.id = id;

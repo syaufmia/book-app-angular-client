@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Author} from '../../model/author';
 import {DataService} from '../../service/data.service';
+import {StringTrimService} from '../../service/string-trim.service';
 
 @Component({
   selector: 'app-show-authors',
@@ -10,7 +11,7 @@ import {DataService} from '../../service/data.service';
 export class ShowAuthorsComponent implements OnInit {
 
   authors: Author[];
-  constructor(private data: DataService) { }
+  constructor(private data: DataService, private trimmer: StringTrimService) { }
 
   ngOnInit(): void {
 

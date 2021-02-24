@@ -13,4 +13,9 @@ export class DataService {
   getApi(url: string): Observable<any> {
     return this.http.get(url);
   }
+
+  postApi(url: string, body: any): Observable<any> {
+    // this.http.post(url, body, { observe: 'response' });
+    return this.http.post(url, body, { observe: 'response' });
+  }
 }

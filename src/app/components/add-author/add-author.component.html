@@ -1,0 +1,28 @@
+<main>
+  <div class="text-box">
+        <h1>Füge einen neuen Autor hinzu</h1>
+        <p>Bitte fülle alle notwendigen Felder aus.</p>
+        <br *ngIf="message === ''"> <p class="red"> {{message}}</p>
+        <form class="form" (submit)="addAuthor()">
+          <table class="form-table">
+            <tr>
+              <td>Vorname: </td>
+              <td><label>
+                <input class="text-field" name="inputFirstName" type="text" size="50" required [(ngModel)]="inputFirst" />
+              </label></td>
+            </tr>
+            <tr>
+              <td>Nachname: </td>
+              <td><label>
+                <input class="text-field" name="inputLastName" type="text" size="50" required [(ngModel)]="inputLast" />
+              </label></td>
+            </tr>
+
+          </table>
+          <input class="button" type="reset" value="Felder leeren" name="clear" />
+          <input class="button" type="submit" value="Hinzufügen" name="submit" />
+        </form>
+
+  </div>
+
+</main>
