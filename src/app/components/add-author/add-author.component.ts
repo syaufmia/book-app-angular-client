@@ -12,6 +12,7 @@ export class AddAuthorComponent implements OnInit {
   inputFirst = '';
   inputLast: '';
   message = '';
+  statusCode = 0;
 
   constructor(private data: DataService) { }
 
@@ -23,8 +24,9 @@ export class AddAuthorComponent implements OnInit {
         this.data.postApi(
           'http://localhost:8080/book_manager_war_exploded/api/v1/author' ,
           JSON.stringify(new Author(this.inputFirst, this.inputLast))
-        ).subscribe()
+        ).subscribe( w => this.statusCode = w.status)
       );
+      console.log(this.statusCode);
       this.message = '';
       this.inputLast = '';
       this.inputLast = '';

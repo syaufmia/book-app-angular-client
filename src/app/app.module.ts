@@ -12,6 +12,7 @@ import { ShowAuthorsComponent } from './components/show-authors/show-authors.com
 import { DataService} from './service/data.service';
 import { AddAuthorComponent } from './components/add-author/add-author.component';
 import {FormsModule} from '@angular/forms';
+import { AddBookComponent } from './components/add-book/add-book.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {FormsModule} from '@angular/forms';
     NavBarComponent,
     ShowBooksComponent,
     ShowAuthorsComponent,
-    AddAuthorComponent
+    AddAuthorComponent,
+    AddBookComponent
   ],
   imports: [
     BrowserModule,
