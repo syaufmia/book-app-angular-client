@@ -1,0 +1,28 @@
+<main>
+  <div class="text-box">
+    <h1>Wer ist der Autor des Buches?</h1>
+
+    <p>Suche nach dem Autor. Vielleicht gibt es den Autor schon in meiner Bibliothek. </p>
+    <br *ngIf="errMessage === '' && message === ''">
+    <p class="red"> {{errMessage}}</p>
+    <p class="grey"> {{message}}</p>
+
+    <form class="form" (submit)="search()">
+      <table class="form-table">
+        <tr>
+          <td>Name: </td>
+          <td>
+            <label>
+            <input class="text-field" type="text" name="input" size="50" [(ngModel)]="name" >
+          </label>
+          </td>
+        </tr>
+      </table>
+      <p class="grey"><i>
+        Du kannst jeweils nach dem vollen Namen, nach Vornamen oder nach Nachnamen suchen </i></p>
+      <input class="button" type="reset" value="Feld leeren" name="clear" />
+      <input class="button" type="submit" value="Suchen" name="submit" />
+    </form>
+  </div>
+
+</main>

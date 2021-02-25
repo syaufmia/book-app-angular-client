@@ -13,6 +13,7 @@ import { DataService} from './service/data.service';
 import { AddAuthorComponent } from './components/add-author/add-author.component';
 import {FormsModule} from '@angular/forms';
 import { AddBookComponent } from './components/add-book/add-book.component';
+import { SearchAuthorComponent } from './components/search-author/search-author.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AddBookComponent } from './components/add-book/add-book.component';
     ShowBooksComponent,
     ShowAuthorsComponent,
     AddAuthorComponent,
-    AddBookComponent
+    AddBookComponent,
+    SearchAuthorComponent
   ],
   imports: [
     BrowserModule,

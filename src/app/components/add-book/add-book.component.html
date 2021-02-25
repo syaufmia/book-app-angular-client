@@ -2,37 +2,38 @@
   <div class="text-box">
     <h1>Füge ein neues Buch hinzu</h1>
     <p>Bitte fülle alle notwendigen Felder aus.</p>
+    <br *ngIf="errMessage === '' && message === ''"> <p class="red"> {{errMessage}}</p>
+   <p class="grey"> {{message}}</p>
 
-
-    <form class="form" name="add-book" >
+    <form class="form" name="add-book" (submit)="formFilled()">
       <table class="form-table">
         <tr>
           <td>Titel: </td>
           <td><label>
-            <input class="text-field" type="text" name="titel" value="" size="50" />
+            <input class="text-field" type="text" name="titel" value="" size="50" [(ngModel)]="inputTitle"/>
           </label></td>
         </tr>
         <tr>
           <td>ISBN: </td>
           <td><label>
-            <input class="text-field" type="text" name="isbn" value="" size="50" />
+            <input class="text-field" type="text" name="isbn" value="" size="50" [(ngModel)]="inputISBN"/>
           </label></td>
         </tr>
         <tr>
           <td>Verlag: </td>
           <td><label>
-            <input class="text-field" type="text" name="publisher" value="" size="50" />
+            <input class="text-field" type="text" name="publisher" value="" size="50" [(ngModel)]="inputPublisher"/>
           </label></td>
         </tr>
         <tr>
           <td>Erscheinungsjahr: </td>
           <td><label>
-            <input class="text-field" type="number" name="year" min="1950" max="2020" step="1" value="2020" size="50" />
+            <input class="text-field" type="number" name="year" min="1950" max="2020" step="1" value="2020" size="50" [(ngModel)]="inputYear"/>
           </label></td>
         </tr>
 
       </table>
-      <input class="button" type="reset" value="Felder leeren" name="clear" />
+      <input class="button" type="reset" value="Felder leeren" name="clear"/>
       <input class="button" type="submit" value="Weiter zum Autor" name="submit" />
     </form>
   </div>

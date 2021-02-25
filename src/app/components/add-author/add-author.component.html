@@ -2,19 +2,20 @@
   <div class="text-box">
         <h1>Füge einen neuen Autor hinzu</h1>
         <p>Bitte fülle alle notwendigen Felder aus.</p>
-        <br *ngIf="message === ''"> <p class="red"> {{message}}</p>
+    <br *ngIf="errMessage === ''"> <p class="red"> {{errMessage}}</p>
+    <br *ngIf="message === ''"> <p class="grey"> {{message}}</p>
         <form class="form" (submit)="addAuthor()">
           <table class="form-table">
             <tr>
               <td>Vorname: </td>
               <td><label>
-                <input class="text-field" name="inputFirstName" type="text" size="50" required [(ngModel)]="inputFirst" />
+                <input class="text-field" name="inputFirstName" type="text" size="50" [(ngModel)]="inputFirst" required/>
               </label></td>
             </tr>
             <tr>
               <td>Nachname: </td>
               <td><label>
-                <input class="text-field" name="inputLastName" type="text" size="50" required [(ngModel)]="inputLast" />
+                <input class="text-field" name="inputLastName" type="text" size="50" [(ngModel)]="inputLast" required/>
               </label></td>
             </tr>
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from '../../service/data.service';
 import {Author} from '../../model/author';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-author',
@@ -11,8 +12,8 @@ export class AddAuthorComponent implements OnInit {
 
   inputFirst = '';
   inputLast: '';
+  errMessage = '';
   message = '';
-  statusCode = 0;
 
   constructor(private data: DataService) { }
 
@@ -24,15 +25,15 @@ export class AddAuthorComponent implements OnInit {
         this.data.postApi(
           'http://localhost:8080/book_manager_war_exploded/api/v1/author' ,
           JSON.stringify(new Author(this.inputFirst, this.inputLast))
-        ).subscribe( w => this.statusCode = w.status)
+        ).subscribe( )
       );
-      console.log(this.statusCode);
-      this.message = '';
+      this.message = `${this.inputFirst} ${this.inputLast} wurde hinzugefügt.`;
+      this.errMessage = '';
       this.inputLast = '';
       this.inputLast = '';
     }
     else {
-      this.message = 'Ein Fehler ist aufgetreten.';
+      this.errMessage = 'Ein Fehler ist aufgetreten.';
     }
   }
 

@@ -16,8 +16,8 @@ export class ShowAuthorsComponent implements OnInit {
   ngOnInit(): void {
 
     this.data.getApi('http://localhost:8080/book_manager_war_exploded/api/v1/author').subscribe(
-      body => {
-        this.authors = body;
+      element => {
+        this.authors = element;
       }
     );
   }
