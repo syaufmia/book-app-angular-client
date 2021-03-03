@@ -10,9 +10,9 @@ export class Book {
 
   constructor(title?: string,
               isbn?: string,
-              author?: Author,
               publisher?: string,
-              year?: number) {
+              year?: number,
+              author?: Author,) {
     if (title) {
       this.title = title;
     }

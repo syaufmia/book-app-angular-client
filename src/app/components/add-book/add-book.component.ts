@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {AppRoutingModule} from '../../app-routing.module';
 import {InputService} from '../../service/input.service';
+import {Book} from '../../model/book';
 
 @Component({
   selector: 'app-add-book',
@@ -11,23 +11,24 @@ import {InputService} from '../../service/input.service';
 export class AddBookComponent implements OnInit {
 
   errMessage = '';
-  inputTitle = '';
-  inputISBN = '';
-  inputYear = 2020;
-  inputPublisher = '';
+  title: string;
+  isbn: string;
+  year: number;
+  publisher = '';
   message = '';
 
-  constructor(private inp: InputService, private router: Router) { }
+  constructor(private input: InputService, private router: Router) { }
 
   ngOnInit(): void {
+    this.year = 2020;
+    if (this.input.complete) {
+      this.message = 'Du hast ein neues Buch hinzugefügt!';
+    }
   }
 
-  formFilled(): void {
-    if (this.inputTitle !== '' && this.inputPublisher !== '' && this.inputISBN !== '' ) {
-      this.inputTitle = this.inp.inputTitle;
-      this. inputISBN = this.inp.inputISBN;
-      this.inputPublisher = this.inp.inputPublisher;
-      this.inputYear = this.inp.inputYear;
+  checkForm(): void {
+    if (this.title !== '' && this.publisher !== '' && this.isbn !== '' ) {
+      this.input.placeholderBook = new Book(this.title, this.isbn, this.publisher, this.year);
       this.errMessage = '';
       this.router.navigate(['/search-author']);
     }

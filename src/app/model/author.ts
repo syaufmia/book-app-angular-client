@@ -24,4 +24,13 @@ export class Author {
       this.books = books;
     }
   }
+
+  static fromHttp(author: Author): Author {
+    const newAuthor = new Author();
+    newAuthor.first_name = author.first_name;
+    newAuthor.last_name = author.last_name;
+    newAuthor.id = author.id;
+    newAuthor.books = author.books;
+    return newAuthor;
+  }
 }

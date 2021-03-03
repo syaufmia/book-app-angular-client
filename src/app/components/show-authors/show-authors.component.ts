@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Author} from '../../model/author';
-import {DataService} from '../../service/data.service';
+import {ApiService} from '../../service/api.service';
 import {StringTrimService} from '../../service/string-trim.service';
 
 @Component({
@@ -11,13 +11,12 @@ import {StringTrimService} from '../../service/string-trim.service';
 export class ShowAuthorsComponent implements OnInit {
 
   authors: Author[];
-  constructor(private data: DataService, private trimmer: StringTrimService) { }
+  constructor(private api: ApiService) { }
 
   ngOnInit(): void {
-
-    this.data.getApi('http://localhost:8080/book_manager_war_exploded/api/v1/author').subscribe(
+    this.api.getApi('http://localhost:8080/book_manager_war_exploded/api/v1/author').subscribe(
       element => {
-        this.authors = element;
+        return this.authors = element;
       }
     );
   }

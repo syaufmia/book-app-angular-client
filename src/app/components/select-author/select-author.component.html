@@ -1,0 +1,37 @@
+ <main>
+  <div class="text-box">
+    <h1>Wer ist der Autor des Buches?</h1>
+    <p>Wähle eine Option.</p>
+    <br *ngIf="errMessage === '' && message === ''">
+    <p class="red"> {{errMessage}}</p>
+    <p class="grey"> {{message}}</p>
+
+    <form class="form" *ngIf="!searchEmpty" name="select-author" (submit)="select()">
+      <table class="form-table">
+        <tr *ngFor="let author of list">
+          <td>
+            <label>
+              <input type="radio" name="author-id" value="{{author.id}}" size="100" checked="checked" [(ngModel)]="selectedAuthorId" />
+            </label>
+          </td>
+          <td>
+            <label>
+              {{author.first_name}} {{author.last_name}}
+            </label>
+          </td>
+        </tr>
+      </table>
+
+      <p class="grey" >
+        Wähle einen Autor aus oder gib einen neuen Autor ein. </p>
+      <input class="button" type="submit" value="Autor auswählen" name="submit" />
+
+    </form>
+    <form name="add-author" (submit)="addAuthor()">
+
+      <input class="button" type="submit" value="Stattdessen einen neuen Autor eingeben" name="submit" />
+    </form>
+  </div>
+
+
+</main>

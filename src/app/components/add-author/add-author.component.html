@@ -2,9 +2,9 @@
   <div class="text-box">
         <h1>Füge einen neuen Autor hinzu</h1>
         <p>Bitte fülle alle notwendigen Felder aus.</p>
-    <br *ngIf="errMessage === ''"> <p class="red"> {{errMessage}}</p>
-    <br *ngIf="message === ''"> <p class="grey"> {{message}}</p>
-        <form class="form" (submit)="addAuthor()">
+    <br *ngIf="message === ''">
+    <p class="{{errorMessage ? 'red' : 'grey'}}"> {{message}}</p>
+        <form class="form" (submit)="fromBook ? addAuthorFromBook() : addAuthor()">
           <table class="form-table">
             <tr>
               <td>Vorname: </td>

@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
+import {Author} from '../model/author';
+import {Book} from '../model/book';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InputService {
 
-  inputTitle = '';
-  inputISBN = '';
-  inputYear = 2020;
-  inputPublisher = '';
+  placeholderBook: Book;
+  list: Author[] = [];
+  fromBook = false;
+  complete = false;
+  listEmpty = true;
 
   constructor() { }
 }

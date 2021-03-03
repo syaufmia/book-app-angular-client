@@ -5,6 +5,7 @@ import {ShowAuthorsComponent} from './components/show-authors/show-authors.compo
 import {AddAuthorComponent} from './components/add-author/add-author.component';
 import {AddBookComponent} from './components/add-book/add-book.component';
 import {SearchAuthorComponent} from './components/search-author/search-author.component';
+import {SelectAuthorComponent} from './components/select-author/select-author.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'authors', component: ShowAuthorsComponent },
   { path: 'add-author', component: AddAuthorComponent },
   { path: 'add-book', component: AddBookComponent },
-  { path: 'search-author', component: SearchAuthorComponent }
+  { path: 'search-author', component: SearchAuthorComponent },
+  { path: 'select-author', component: SelectAuthorComponent }
 ];
 
 @NgModule({

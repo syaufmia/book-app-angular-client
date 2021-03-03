@@ -9,7 +9,7 @@ export class StringTrimService {
 
   getTrimmed(sentence: string): string {
     const words: string[] = sentence.split(' ');
-    let newSentence: string;
+    const newSentence =  '';
     for (let i = 0; i < words.length; i++) {
       if (words[i] !== '') {
         newSentence.concat(words[i].substring(0, 1).toUpperCase()).concat(words[i].substring(1).toLowerCase());

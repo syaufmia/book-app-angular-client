@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {InputService} from '../../service/input.service';
 import {Author} from '../../model/author';
-import {DataService} from '../../service/data.service';
+import {ApiService} from '../../service/api.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-search-author',
@@ -10,31 +11,38 @@ import {DataService} from '../../service/data.service';
 })
 export class SearchAuthorComponent implements OnInit {
 
-  errMessage = '';
-  message = '';
-  name = '';
-  list: Author[] = [];
+  errMessage;
+  message;
+  name;
 
 
-  constructor(private inp: InputService, private data: DataService) { }
+  constructor(private input: InputService, private api: ApiService, private router: Router) { }
 
   ngOnInit(): void {
+    if (this.input.placeholderBook == null) {
+      this.router.navigate(['/add-book']);
+    }
   }
 
   search(): void {
-    if (this.name !== '') {
-      this.data.getApi(`http://localhost:8080/book_manager_war_exploded/api/v1/search/author/${this.name.toLowerCase()}`)
+    if (this.name !== '' && this.name != null) {
+      this.api
+        .getAuthorList(`http://localhost:8080/book_manager_war_exploded/api/v1/search/author/${this.name.toLowerCase()}`)
         .subscribe(
-          body => {
-            this.list = body;
+          next => {
+            // console.log(next.length);
+            // for (const item of next) {
+            //   this.input.list.push(item);
+            // }
+            // console.log(`Länge: ${this.input.list.length}`, this.input.list);
+            this.input.list = next;
+            this.errMessage = '';
+            this.router.navigate(['/select-author']);
           }
         );
-      this.errMessage = '';
-      console.log(this.list);
     }
     else {
       this.errMessage = 'Bitte gib etwas ein.';
     }
   }
-
 }
