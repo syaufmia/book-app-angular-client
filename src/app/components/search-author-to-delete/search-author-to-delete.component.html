@@ -1,0 +1,27 @@
+<main>
+  <div class="text-box">
+    <h1>Welchen Autor möchtest du löschen?</h1>
+
+    <p>Suche nach dem Autor, den du löschen möchtest.</p>
+    <br *ngIf="message === ''">
+    <p class="{{errorMessage ? 'red' : 'grey'}}"> {{message}}</p>
+
+    <form class="form" (submit)="search()">
+      <table class="form-table">
+        <tr>
+          <td>Name: </td>
+          <td>
+            <label>
+              <input class="text-field" type="text" name="input" size="50" [(ngModel)]="name" >
+            </label>
+          </td>
+        </tr>
+      </table>
+      <p class="grey"><i>
+        Du kannst jeweils nach dem vollen Namen, nach Vornamen oder nach Nachnamen suchen </i></p>
+      <input class="button" type="reset" value="Feld leeren" name="clear" />
+      <input class="button" type="submit" value="Suchen" name="submit" />
+    </form>
+  </div>
+
+</main>

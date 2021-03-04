@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class SelectAuthorComponent implements OnInit {
 
-  // TODO: errMessage : boolean (checking - check, whether red or grey)
+  // TODO: errMessage : boolean
   errMessage = '';
   message = '';
   list: Author[];
@@ -22,11 +22,11 @@ export class SelectAuthorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.input.list == null || this.input.placeholderBook == null) {
+    if (this.input.placeholderAuthorList == null || this.input.placeholderBook == null) {
       this.router.navigate(['/add-book']);
     }
     else {
-      this.list = this.input.list;
+      this.list = this.input.placeholderAuthorList;
       if (this.list.length === 0) {
         this.searchEmpty = true;
         this.errMessage = 'Es gibt keinen Autor mit diesem Namen.';
@@ -36,7 +36,7 @@ export class SelectAuthorComponent implements OnInit {
 
   addAuthor(): void {
     this.input.fromBook = true;
-    this.router.navigate(['/add-author']);
+    this.router.navigate(['add-author']);
   }
 
   select(): void {
@@ -55,9 +55,9 @@ export class SelectAuthorComponent implements OnInit {
       ).subscribe(
         next => {
           this.input.placeholderBook = null;
-          this.input.list = null;
+          this.input.placeholderAuthorList = null;
           this.input.complete = true;
-          this.router.navigate(['/add-book']);
+          this.router.navigate(['add-book']);
         }
       );
     }
@@ -65,7 +65,7 @@ export class SelectAuthorComponent implements OnInit {
     {
       this.message = '';
       this.errMessage = 'Es ist ein unerwarteter Fehler aufgetreten.';
-      this.router.navigate(['/add-book']);
+      this.router.navigate(['add-book']);
     }
   }
 }

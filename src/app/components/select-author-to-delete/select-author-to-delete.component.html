@@ -1,0 +1,39 @@
+<main>
+  <div class="text-box">
+    <h1>Welchen Autor möchtest du löschen?</h1>
+    <p>Wähle eine Option.</p>
+    <br *ngIf="message === ''">
+    <p class="{{errorMessage ? 'red' : 'grey'}}"> {{message}}</p>
+
+    <form class="form" name="select-author" (submit)="delete()">
+      <table class="form-table">
+        <tr *ngFor="let author of list">
+          <td>
+            <label>
+              <input type="radio" name="author-id" value="{{author.id}}" size="100" checked="checked" [(ngModel)]="selectedAuthorId" />
+            </label>
+          </td>
+          <td>
+            <label>
+              {{author.first_name}} {{author.last_name}}
+            </label>
+          </td>
+        </tr>
+      </table>
+
+      <p class="grey" >
+        Wähle den Autor, den du löschen möchtest. </p>
+      <input class="button" type="submit" value="Autor löschen" name="submit" />
+    </form>
+    <form name="return" (submit)="goBack()">
+      <input class="button" type="submit" value="Zurück zu Anfang" name="submit" />
+    </form>
+  </div>
+<!--    <form name="add-author" (submit)="addAuthor()">-->
+
+<!--      <input class="button" type="submit" value="Stattdessen einen neuen Autor eingeben" name="submit" />-->
+<!--    </form>-->
+
+
+
+</main>

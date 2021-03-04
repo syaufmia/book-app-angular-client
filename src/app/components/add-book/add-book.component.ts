@@ -10,31 +10,42 @@ import {Book} from '../../model/book';
 })
 export class AddBookComponent implements OnInit {
 
-  errMessage = '';
+  errorMessage: boolean;
   title: string;
   isbn: string;
   year: number;
-  publisher = '';
-  message = '';
+  publisher: string;
+  message: string;
 
   constructor(private input: InputService, private router: Router) { }
 
   ngOnInit(): void {
+    this.title = '';
+    this.isbn = '';
+    this.publisher = '';
+    this.message = '';
     this.year = 2020;
     if (this.input.complete) {
+      this.errorMessage = false;
       this.message = 'Du hast ein neues Buch hinzugefügt!';
     }
+    else if (this.input.abort) {
+      this.errorMessage = true;
+      this.message = this.input.placeholderMessage;
+      this.input.abort = false;
+    }
+    this.input.setAllBack();
   }
 
   checkForm(): void {
     if (this.title !== '' && this.publisher !== '' && this.isbn !== '' ) {
       this.input.placeholderBook = new Book(this.title, this.isbn, this.publisher, this.year);
-      this.errMessage = '';
+      this.errorMessage = false;
       this.router.navigate(['/search-author']);
     }
     else {
-      this.errMessage = 'Bitte fülle alle Felder aus.';
-      this.message = '';
+      this.errorMessage = true;
+      this.message = 'Bitte fülle alle Felder aus.';
     }
   }
 

@@ -8,10 +8,18 @@ import {Book} from '../model/book';
 export class InputService {
 
   placeholderBook: Book;
-  list: Author[] = [];
+  placeholderBookList: Book[];
+  placeholderAuthorList: Author[];
+  placeholderMessage = '';
   fromBook = false;
   complete = false;
-  listEmpty = true;
+  abort = false;
 
   constructor() { }
+
+  setAllBack(): void {
+    this.fromBook = false;
+    this.complete = false;
+    this.abort = false;
+  }
 }

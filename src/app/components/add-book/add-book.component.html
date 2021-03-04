@@ -2,8 +2,8 @@
   <div class="text-box">
     <h1>Füge ein neues Buch hinzu</h1>
     <p>Bitte fülle alle notwendigen Felder aus.</p>
-    <br *ngIf="errMessage === '' && message === ''"> <p class="red"> {{errMessage}}</p>
-   <p class="grey"> {{message}}</p>
+    <br *ngIf="message === ''">
+    <p class="{{errorMessage ? 'red' : 'grey'}}"> {{message}}</p>
 
     <form class="form" name="add-book" (submit)="checkForm()">
       <table class="form-table">
