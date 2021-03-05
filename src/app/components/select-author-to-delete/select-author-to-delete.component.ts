@@ -15,6 +15,7 @@ export class SelectAuthorToDeleteComponent implements OnInit {
   message: string;
   list: Author[];
   selectedAuthorId: number;
+  showPage: boolean;
 
   constructor(private input: InputService, private api: ApiService, private router: Router) {
   }
@@ -22,10 +23,13 @@ export class SelectAuthorToDeleteComponent implements OnInit {
   ngOnInit(): void {
     this.message = '';
     if (this.input.placeholderAuthorList == null) {
-      // TODO: etwas ist schiefgelaufen, bitte kurz warten & 2-3 Sekunden später navigate
-      this.router.navigate(['/search-author-to-delete']);
+      this.showPage = false;
+      setTimeout( () => {
+        this.router.navigate(['/search-author-to-delete']);
+      }, 1500);
     }
     else {
+      this.showPage = true;
       this.list = this.input.placeholderAuthorList;
     }
   }

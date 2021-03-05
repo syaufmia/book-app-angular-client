@@ -1,6 +1,6 @@
 <main>
-  <div class="text-box">
-    <h1>Welchen Autor möchtest du löschen?</h1>
+  <div class="text-box" *ngIf="showPage">
+    <h1>Welches Buch möchtest du löschen?</h1>
     <p>Wähle eine Option.</p>
     <br *ngIf="message === ''">
     <p class="{{errorMessage ? 'red' : 'grey'}}"> {{message}}</p>
@@ -22,18 +22,19 @@
       </table>
 
       <p class="grey" >
-        Wähle den Autor, den du löschen möchtest. </p>
-      <input class="button" type="submit" value="Autor löschen" name="submit" />
+        Wähle das Buch, welches du löschen möchtest. </p>
+      <input class="button" type="submit" value="Buch löschen" name="submit" />
     </form>
     <form name="return" (submit)="goBack()">
       <input class="button" type="submit" value="Zurück zu Anfang" name="submit" />
     </form>
   </div>
-  <!--    <form name="add-author" (submit)="addAuthor()">-->
 
-  <!--      <input class="button" type="submit" value="Stattdessen einen neuen Autor eingeben" name="submit" />-->
-  <!--    </form>-->
 
+  <div class="text-box" *ngIf="!showPage">
+    <p class="red">Ups! Etwas ist schief gelaufen...Du wirst weitergeleitet. Einen Moment bitte.</p>
+    <img src="../../../assets/img/loading-custom-transparent.gif" alt="loading..."/>
+  </div>
 
 
 </main>

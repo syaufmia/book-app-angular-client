@@ -3,6 +3,7 @@ import {InputService} from '../../service/input.service';
 import {Author} from '../../model/author';
 import {ApiService} from '../../service/api.service';
 import {Router} from '@angular/router';
+import {catchError} from 'rxjs/operators';
 
 @Component({
   selector: 'app-select-author',
@@ -17,15 +18,23 @@ export class SelectAuthorComponent implements OnInit {
   list: Author[];
   selectedAuthorId: number;
   searchEmpty = false;
+  showPage: boolean;
 
   constructor(private input: InputService, private api: ApiService, private router: Router) {
+    this.router.events.subscribe((event) => {
+      console.log(event);
+    });
   }
 
   ngOnInit(): void {
     if (this.input.placeholderAuthorList == null || this.input.placeholderBook == null) {
-      this.router.navigate(['/add-book']);
+      this.showPage = false;
+      setTimeout(() => {
+        this.router.navigate(['add-book']);
+      }, 1500);  // 5s
     }
     else {
+      this.showPage = true;
       this.list = this.input.placeholderAuthorList;
       if (this.list.length === 0) {
         this.searchEmpty = true;
@@ -54,9 +63,21 @@ export class SelectAuthorComponent implements OnInit {
         )
       ).subscribe(
         next => {
-          this.input.placeholderBook = null;
+          this.input.setAllBack();
           this.input.placeholderAuthorList = null;
-          this.input.complete = true;
+          this.router.navigate(['add-book']);
+        },
+        error => {
+          catchError(error);
+          this.input.setAllBack();
+          this.input.abort = true;
+          this.input.placeholderAuthorList = null;
+          if (error.status === 409) {
+            this.input.placeholderMessage = 'Ein Buch mit dieser ISBN existiert bereits.';
+          }
+          else {
+            this.input.placeholderMessage = 'Ein unbekannter Fehler ist aufgetreten. Bitte versuche es erneut.';
+          }
           this.router.navigate(['add-book']);
         }
       );

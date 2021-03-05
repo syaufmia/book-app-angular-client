@@ -1,5 +1,5 @@
  <main>
-  <div class="text-box">
+  <div class="text-box" *ngIf="showPage">
     <h1>Wer ist der Autor des Buches?</h1>
     <p>Wähle eine Option.</p>
     <br *ngIf="errMessage === '' && message === ''">
@@ -31,7 +31,12 @@
     <form name="add-author" (submit)="addAuthor()">
       <input class="button" type="submit" value="Stattdessen einen neuen Autor eingeben" name="submit" />
     </form>
+
   </div>
+   <div class="text-box" *ngIf="!showPage">
+     <p class="red">Ups! Etwas ist schief gelaufen...Du wirst weitergeleitet. Einen Moment bitte.</p>
+     <img src="../../../assets/img/loading-custom-transparent.gif" alt="loading..."/>
+   </div>
 
 
 </main>

@@ -14,14 +14,28 @@ export class SearchAuthorComponent implements OnInit {
   errMessage;
   message;
   name;
+  showPage: boolean;
 
 
-  constructor(private input: InputService, private api: ApiService, private router: Router) { }
+  constructor(private input: InputService, private api: ApiService, private router: Router) {
+    this.router.events.subscribe((event) => {
+      console.log(event);
+    });
+  }
 
   ngOnInit(): void {
 
     if (this.input.placeholderBook == null) {
-      this.router.navigate(['add-book']);
+      setTimeout(() =>
+        {
+          this.showPage = false;
+          this.router.navigate(['add-book']);
+        },
+        1500
+      );
+    }
+    else {
+      this.showPage = true;
     }
   }
 

@@ -41,8 +41,10 @@ export class SearchBookToDeleteComponent implements OnInit {
               this.router.navigate(['select-book-to-delete']);
             }
             else {
+              this.word = null;
               this.errorMessage = true;
               this.message = 'Es konnte leider kein Buch mit dem Suchbegriff gefunden werden.';
+              this.ngOnInit();
             }
           }
         );

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Author} from '../../model/author';
 import {InputService} from '../../service/input.service';
 import {ApiService} from '../../service/api.service';
 import {Router} from '@angular/router';
@@ -15,7 +14,8 @@ export class SelectBookToDeleteComponent implements OnInit {
   errorMessage: boolean;
   message: string;
   list: Book[];
-  selectedIsbn: number;
+  selectedIsbn: string;
+  showPage: boolean;
 
   constructor(private input: InputService, private api: ApiService, private router: Router) {
   }
@@ -23,10 +23,14 @@ export class SelectBookToDeleteComponent implements OnInit {
   ngOnInit(): void {
     this.message = '';
     if (this.input.placeholderBookList == null) {
-      // TODO: etwas ist schiefgelaufen, bitte kurz warten & 2-3 Sekunden später navigate
-      this.router.navigate(['search-book-to-delete']);
+      this.showPage = false;
+      setTimeout( () => {
+        this.router.navigate(['search-book-to-delete']);
+      },
+        1500);
     }
     else {
+      this.showPage = true;
       this.list = this.input.placeholderBookList;
     }
   }
@@ -34,8 +38,8 @@ export class SelectBookToDeleteComponent implements OnInit {
   delete(): void {
     if (this.selectedIsbn) {
       this.api.delete(
-        `http://localhost:8080/book_manager_war_exploded/api/v1/book/${this.selectedIsbn}`
-      ).subscribe(
+        `http://localhost:8080/book_manager_war_exploded/api/v1/book/isbn/${this.selectedIsbn}`)
+        .subscribe(
         next => {
           this.input.placeholderBookList = null;
           this.input.complete = true;
