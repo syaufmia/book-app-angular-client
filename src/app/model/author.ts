@@ -2,10 +2,12 @@ import {Book} from './book';
 
 export class Author {
 
+  // tag::AuthorField[]
   id: number;
   first_name: string;
   last_name: string;
   books: Book[];
+  // end::AuthorField[]
 
   constructor(first_name?: string,
               last_name?: string,

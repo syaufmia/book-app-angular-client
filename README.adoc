@@ -1,0 +1,64 @@
+= Bücherverwaltung Angular Client
+Safiye Uzun <safiye.uzun@msg.group>
+v1.0, 2021-02-11
+:toc:
+:toc-title: Inhaltsverzeichnis
+
+== Einleitung
+
+Dieses Projekt ist eine veränderte Version der "Bücherverwaltung" Java Webapplikation. +
+Zur Erweiterung der bereits erlernten Webentwicklungstechniken mit Java wurde im Rahmen der Ausbildung das neue Thema _Single Page Application_ mit Angular eingeführt. +
+Dabei bleibt die gesamte _user experience_, d.h. Nutzeroberfläche und alle Funktionalitäten für den Nutzer der Applikation unverändert. +
+
+In dieser Version der Bücherapplikation wurde die gesamte Logik der Nutzeroberfläche in Angular geschrieben. Dabei fungiert die Angular-Applikation als Client, der von einem "Server", in diesem Fall von der erste Java Buch-Applikation, die Daten empfängt. Die Schnittstelle der getrennten Logik, d.h. die Verarbeitung der Daten auf der Java-Applikation und die Verarbeitung der Nutzereingabe der Angular-Applikation, werden mithilfe der bereits existierenden RESTful API hergestellt.
+
+
+.geschätzter zeitlicher Aufwand
+[cols=*]
+|====
+h| Angular Front-End
+| ~ 80h
+|====
+====
+Der geschätzte Aufwand beschränkt sich nur auf die Erarbeitung der Angular-Applikation. der für die API (Back-End) benötigte Zeitaufwand ist bereits in der ersten Java-Webapplikation dokumentiert.
+====
+
+== Umgebung
+
+=== Starten
+* wie man startet
+* localhost:4200 & localhost:8080 getrennt
+* Da Angular in Jasascript compiliert, wird keine seperate Laufzeitumgebung zum Starten benötigt (da Browser schon eine JS Laufzeitumgebung integriert haben)
+* Starten der Back-End API -> siehe Java Webapplikation Dokumentation
+* _CHECK HOW TO RUN THE ANGULAR APPLICATION IN PRODUCTION MODE_
+
+
+
+== Technische Grundlagen
+
+* Unterschiede in Struktur (mit Beispiel)
+
+* Aufruf der API über HttpClientModule (mit Beispiel)
+
+* Verwendetes Model (Klassen)
+[source,typescript]
+----
+include::src/app/model/author.ts[tags=AuthorField]
+----
+
+* Ein Beispiel-Ablaufdiagramm
+
+
+
+== Java Web-App Vergleich
+
+=== Vorteile:
+
+* Code ist deutlich schneller zu verstehen (da Strukturierter)
+* Applikation reagiert grundsätzlich schneller
+* Gestaltung der Error-Seiten deutlich besser umsetzbar
+
+=== Nachteile:
+
+* Bugs schwieriger nachvollziehbar (Debugging in Java besser)
+* Zwei Server gleichzeitig am Laufen
